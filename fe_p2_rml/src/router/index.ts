@@ -27,6 +27,11 @@ const router = createRouter({
       name: 'paises',
       component: () => import('../views/PaisView.vue'),
     },
+    {
+      path: '/idiomaPrincipal',
+      name: 'idiomaPrincipal',
+      component: () => import('../views/idiomaPrincipalView.vue'),
+    },
   ],
 })
 

@@ -1,4 +1,4 @@
-import { Serie } from 'src/series/entities/serie.entity';
+import { Pais } from 'src/paises/entities/pais.entity';
 import {
   Column,
   CreateDateColumn,
@@ -10,13 +10,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('paises')
-export class Pais {
+@Entity('idioma_principal')
+export class IdiomaPrincipal {
   @PrimaryGeneratedColumn('identity')
   id: number;
-
-  @Column('integer', { name: 'id_serie' })
-  idSerie: number;
 
   @Column('varchar', { length: 30 })
   descripcion: string;
@@ -28,10 +25,9 @@ export class Pais {
   fechaModificacion: Date;
 
   @DeleteDateColumn({ name: 'fecha_eliminacion' })
-  fechaEliminacion: Date;
+  FechaEliminacion: Date;
 
-  @ManyToOne(() => Serie, serie => serie.pais)
-  @JoinColumn({ name: 'id_serie', referencedColumnName: 'id' })
-  series: Serie;
-  idioma_principal: any;
+  @ManyToOne(() => Pais, pais => pais.idioma_principal)
+  @JoinColumn({ name: 'id_pais' })
+  pais: Pais;
 }

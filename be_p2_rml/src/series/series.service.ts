@@ -1,8 +1,8 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import { CreateSerieDto } from './dto/create-serie.dto';
-import { UpdateSerieDto } from './dto/update-serie.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateSerieDto } from './dto/create-serie.dto';
+import { UpdateSerieDto } from './dto/update-serie.dto';
 import { Serie } from './entities/serie.entity';
 
 @Injectable()
@@ -27,32 +27,7 @@ export class SeriesService {
     return this.seriesRepository.save(serie);
   }
 
-  // async findAll(): Promise<Serie[]> {
-  //   return this.seriesRepository.find({
-  //     relations: { pais: true},
-  //     select: {
-  //       id: true,
-  //       titulo: true,
-  //       sinopsis: true,
-  //       director: true,
-  //       temporadas: true,
-  //       fechaEstreno: true,
-  //       pais: { id: true, descripcion: true },
-  //     },
-  //   });
-  // }
-
-  // async findOne(id: number): Promise<Serie> {
-  //   const serie = await this.seriesRepository.findOne({
-  //     where: { id },
-  //     relations: { pais: true },
-  //   });
-
-  //   if (!serie) throw new NotFoundException('El serie no existe');
-
-  //   return serie;
-  // }
-async findAll() {
+  async findAll() {
     return this.seriesRepository.find({ order: { titulo: 'ASC' } });
   }
 

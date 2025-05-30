@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SeriesModule } from './series/series.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { IdiomaPrincipalModule } from './idioma_principal/idioma_principal.module';
 import { PaisesModule } from './paises/paises.module';
+import { SeriesModule } from './series/series.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { PaisesModule } from './paises/paises.module';
     }),
     SeriesModule,
     PaisesModule,
+    IdiomaPrincipalModule,
   ],
   controllers: [AppController],
   providers: [AppService],
